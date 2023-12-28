@@ -42,4 +42,12 @@ public class UrlController {
     public List<UrlStatDTO> stat() {
         return urlService.getStatistics();
     }
+
+    @GetMapping("delete/{id}")
+    public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
+
+        return urlService.deleteUrl(id)==null ? new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE)
+                                              : new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }

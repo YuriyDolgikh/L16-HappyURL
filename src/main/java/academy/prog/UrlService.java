@@ -15,7 +15,6 @@ public class UrlService {
         this.urlRepository = urlRepository;
     }
 
-
     @Transactional
     public long saveUrl(UrlDTO urlDTO) {
         var urlRecord = urlRepository.findByUrl(urlDTO.getUrl());
@@ -25,6 +24,15 @@ public class UrlService {
         }
 
         return urlRecord.getId();
+    }
+
+    @Transactional
+    public String deleteUrl(long id) {
+        if (urlRepository.findById(id).isEmpty()){
+            return null;
+        }
+        urlRepository.deleteById(id);
+        return "OK";
     }
 
     @Transactional
