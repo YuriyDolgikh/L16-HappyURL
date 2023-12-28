@@ -6,12 +6,11 @@ import java.util.Date;
 
 @Component
 public class CheckAliveScheduler {
-    private final UrlService urlService;
+
     private final UrlRepository urlRepository;
     private final static Long timeAlive = 300000L;
 
-    public CheckAliveScheduler(UrlService urlService, UrlRepository urlRepository) {
-        this.urlService = urlService;
+    public CheckAliveScheduler(UrlRepository urlRepository) {
         this.urlRepository = urlRepository;
     }
 
